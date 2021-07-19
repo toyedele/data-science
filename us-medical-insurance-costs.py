@@ -121,6 +121,21 @@ insurance_modified['bmi_group'] = bmi_group
 charges_grouped_by_sex_and_bmi_group = insurance_modified.charges.groupby(by=[
     insurance_modified.sex,insurance_modified.bmi_group]).mean()
 
+
+def charges_compared_to_smoking_and_region():
+    # comparing smoking to charges
+    sns.boxplot(data =insurance_modified, x='smoker' , y='charges')
+    plt.title('Smoking vs Charges')
+    plt.show()
+    
+    
+    # comparing the region to charges
+    sns.boxplot(data =insurance_modified, x='region' , y='charges')
+    plt.title('Region vs Charges')
+    plt.show()
+    
+charges_compared_to_smoking_and_region()
+
 def chart_by_age_and_sex():
     female = list(charges_grouped_by_sex_and_age_group[:5])
     male = list(charges_grouped_by_sex_and_age_group[5:])
@@ -191,7 +206,3 @@ def chart_by_bmi_and_sex():
     plt.show()
 
 chart_by_bmi_and_sex()
-
-
-
-
